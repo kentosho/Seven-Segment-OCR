@@ -82,9 +82,9 @@ class Model_Multi(Model):
         digit3 = (Dense(11,activation = 'softmax', name='digit_3'))(x)
         digit4 = (Dense(11,activation = 'softmax', name='digit_4'))(x)
 
-        outputs = [digit1, digit2, digit3, digit4]
+        model_outputs = [digit1, digit2, digit3, digit4]
 
-        self.model = Model(inputs = model_input , outputs = outputs)
+        self.model = Model(inputs = model_input , outputs = model_outputs)
         self.model._make_predict_function()
         
     def train(self, lr = 1e-3, epochs=50):
