@@ -74,6 +74,7 @@ class Model_Multi(Model):
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_3')(x)
         x = Dropout(0.30)(x)
         x = Flatten()(x)
+
         x = Dense( units= 256, activation ='relu')(x)
         digit1 = (Dense(11,activation = 'softmax', name='digit_1'))(x)
         digit2 = (Dense(11,activation = 'softmax', name='digit_2'))(x)
