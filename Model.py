@@ -2,21 +2,23 @@ import numpy as np
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
-from keras.models import Sequential
-from keras.models import Model
-from keras.layers import Input, Dense, Conv2D, MaxPooling2D, Flatten
-from keras.layers.core import Dropout, Activation
-from keras.layers import BatchNormalization
-import tensorflow as tf
-from keras import regularizers
-import keras.backend
-from keras.optimizers import Adam
+from tensorflow.compat.v1.keras.models import Sequential
+from tensorflow.compat.v1.keras.models import Model
+from tensorflow.compat.v1 keras.layers import Input, Dense, Conv2D, MaxPooling2D, Flatten
+from tensorflow.compat.v1.keras.layers.core import Dropout, Activation
+from tensorflow.compat.v1.keras.layers import BatchNormalization
+import tensorflow.compat.v1 as tf
+from tensorflow.compat.v1.keras import regularizers
+import tensorflow.compat.v1.keras.backend
+from tensorflow.compat.v1.keras.optimizers import Adam
 from tensorflow.compat.v1.keras.utils import plot_model
-from keras.callbacks import TensorBoard,EarlyStopping
+from tensorflow.compat.v1.keras.callbacks import TensorBoard,EarlyStopping
 from Datasets import Dataset_Multi, Dataset_Single
 import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
+
+tf.disable_v2_behavior()
 
 class Model(object):
     
