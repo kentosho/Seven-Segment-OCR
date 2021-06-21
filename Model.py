@@ -76,6 +76,7 @@ class Model_Multi(Model):
         x = Flatten()(x)
 
         x = Dense( units= 256, activation ='relu')(x)
+
         digit1 = (Dense(11,activation = 'softmax', name='digit_1'))(x)
         digit2 = (Dense(11,activation = 'softmax', name='digit_2'))(x)
         digit3 = (Dense(11,activation = 'softmax', name='digit_3'))(x)
