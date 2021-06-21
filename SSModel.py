@@ -17,6 +17,22 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
+class SSModel(Model):
+
+    def __init__(self):
+
+        self.data_init()
+        self.model_init()
+
+    def data_init(self):
+        pass
+
+    def model_init(self):
+        pass
+
+    def train_predict(self):
+        pass
+
 
 class Model_Multi(Model):
     
@@ -135,7 +151,7 @@ class Model_Multi(Model):
         self.plot_acc()
         self.predict()
         
-class Model_Single(Model):
+class Model_Single(SSModel):
     
     
     def __init__(self):
