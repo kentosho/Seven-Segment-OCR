@@ -1,5 +1,5 @@
 from tensorflow.compat.v1.keras.backend import set_session
-from Model import Model_Multi, Model_Single
+from SSModel import Model_Multi, Model_Single
 import tensorflow.compat.v1 as tf
 
 tf.disable_v2_behavior()
