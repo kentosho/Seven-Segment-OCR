@@ -17,7 +17,7 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
-class Model(Model):
+class SSModel(Model):
 
     def __init__(self):
 
