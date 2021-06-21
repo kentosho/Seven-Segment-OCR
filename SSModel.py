@@ -51,6 +51,7 @@ class Model_Multi(Model):
         
         self.X_train = self.dataset.convert_to_arrays(self.ids_train)
         self.X_val = self.dataset.convert_to_arrays(self.ids_val)
+        slef.model = Model
               
     def model_init(self):
 
