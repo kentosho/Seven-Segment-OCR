@@ -154,7 +154,7 @@ class Model_Multi(Model):
         self.plot_acc()
         self.predict()
         
-class Model_Single(SSModel):
+class Model_Single(Model):
     
     
     def __init__(self):
