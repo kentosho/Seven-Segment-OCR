@@ -87,8 +87,10 @@ class Model_Multi(Model):
 
         ssmodel = Model(inputs = model_input , outputs = model_outputs)
         ssmodel._make_predict_function()
+        return ssmodel
         
     def train(self, lr = 1e-3, epochs=50):
+        ssmodel=self.model_init
         optimizer = Adam(lr=lr, decay=lr/10)
         ssmodel.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
         keras.backend.get_session().run(tf.initialize_all_variables())
