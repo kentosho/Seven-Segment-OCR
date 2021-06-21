@@ -68,14 +68,14 @@ class Model_Multi(Model):
 
         model_outputs = [digit1, digit2, digit3, digit4]
 
-        self.model = Model(inputs = model_input , outputs = model_outputs)
-        self.model._make_predict_function()
+        self.ssmodel = Model(inputs = model_input , outputs = model_outputs)
+        self.ssmodel._make_predict_function()
         
     def train(self, lr = 1e-3, epochs=50):
         optimizer = Adam(lr=lr, decay=lr/10)
-        self.model.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
+        self.ssmodel.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
         keras.backend.get_session().run(tf.initialize_all_variables())
-        self.history = self.model.fit(self.X_train, self.y_train_vect, batch_size= 50, nb_epoch=epochs, verbose=1, validation_data=(self.X_val, self.y_val_vect))
+        self.history = self.ssmodel.fit(self.X_train, self.y_train_vect, batch_size= 50, nb_epoch=epochs, verbose=1, validation_data=(self.X_val, self.y_val_vect))
         
         
     def plot_loss(self):
@@ -107,7 +107,7 @@ class Model_Multi(Model):
         
 
     def predict(self):
-        self.y_pred = self.model.predict(self.X_val)
+        self.y_pred = self.ssmodel.predict(self.X_val)
         correct_preds = 0
         
         for i in range(self.X_val.shape[0]):
@@ -155,8 +155,8 @@ class Model_Single(Model):
     def model_init(self):
 
 
-        model_input = Input((100, 256, 1))
-        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1')(model_input)
+        model_inputs = Input((100, 256, 1))
+        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1')(model_inputs)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_1')(x)
@@ -178,16 +178,16 @@ class Model_Single(Model):
 
         x = Dense( 1024, activation ='relu', name='dense2')(x)
 
-        output = Dense( 11,activation = 'softmax', name='output')(x)
+        model_outputs = Dense( 11,activation = 'softmax', name='output')(x)
 
-        self.model = keras.models.Model(input = model_input , output = output)
-        self.model._make_predict_function() 
+        self.ssmodel = keras.models.Model(inputs = model_inputs , outputs = model_outputs)
+        self.ssmodel._make_predict_function() 
 
     def train(self, lr = 1e-3, epochs=5):
         optimizer = Adam(lr=lr, decay=lr/10)
-        self.model.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
+        self.ssmodel.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
         keras.backend.get_session().run(tf.initialize_all_variables())
-        self.history = self.model.fit(self.X_train, self.y_train, batch_size= 32, nb_epoch=30, verbose=1, validation_data=(self.X_val, self.y_val))
+        self.history = self.ssmodel.fit(self.X_train, self.y_train, batch_size= 32, nb_epoch=30, verbose=1, validation_data=(self.X_val, self.y_val))
 
 
     def plot_acc(self):
@@ -212,7 +212,7 @@ class Model_Single(Model):
 
     def predict(self):
         
-        self.y_pred = self.model.predict(self.X_val)
+        self.y_pred = self.ssmodel.predict(self.X_val)
         
         ids = []
         pred_list = []
