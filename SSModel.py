@@ -53,7 +53,7 @@ class Model_Multi(Model):
         self.X_val = self.dataset.convert_to_arrays(self.ids_val)
               
     def model():
-    pass
+        pass
 
     def model_init(self):
 
