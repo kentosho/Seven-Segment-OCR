@@ -80,10 +80,10 @@ class Model_Multi(Model):
 
         x = Dense(256, activation ='relu', kernel_regularizer=regularizers.l2(0.01))(x)
 
-        digit1 = (Dense(output_dim =11,activation = 'softmax', name='digit_1'))(x)
-        digit2 = (Dense(output_dim =11,activation = 'softmax', name='digit_2'))(x)
-        digit3 = (Dense(output_dim =11,activation = 'softmax', name='digit_3'))(x)
-        digit4 = (Dense(output_dim =11,activation = 'softmax', name='digit_4'))(x)
+        digit1 = (Dense(11,activation = 'softmax', name='digit_1'))(x)
+        digit2 = (Dense(11,activation = 'softmax', name='digit_2'))(x)
+        digit3 = (Dense(11,activation = 'softmax', name='digit_3'))(x)
+        digit4 = (Dense(11,activation = 'softmax', name='digit_4'))(x)
 
         outputs = [digit1, digit2, digit3, digit4]
 
@@ -197,7 +197,7 @@ class Model_Single(Model):
 
         x = Dense(1024, activation ='relu', kernel_regularizer=regularizers.l2(0.01))(x)
 
-        output = Dense(output_dim =11,activation = 'softmax', name='output')(x)
+        output = Dense(11,activation = 'softmax', name='output')(x)
 
         self.model = keras.models.Model(input = model_input , output = output)
         self.model._make_predict_function() 
