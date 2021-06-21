@@ -8,10 +8,7 @@ from tensorflow.compat.v1 keras.layers import Input, Dense, Conv2D, MaxPooling2D
 from tensorflow.compat.v1.keras.layers.core import Dropout, Activation
 from tensorflow.compat.v1.keras.layers import BatchNormalization
 import tensorflow.compat.v1 as tf
-from tensorflow.compat.v1.keras import regularizers
-from tensorflow.compat.v1.keras import activations
 
-import tensorflow.compat.v1.keras.backend
 from tensorflow.compat.v1.keras.optimizers import Adam
 from tensorflow.compat.v1.keras.utils import plot_model
 from tensorflow.compat.v1.keras.callbacks import TensorBoard,EarlyStopping
