@@ -9,9 +9,9 @@ from keras.layers.core import Dropout, Activation
 from keras.layers import BatchNormalization
 import tensorflow.compat.v1 as tf
 
-from tensorflow.compat.v1.keras.optimizers import Adam
-from tensorflow.compat.v1.keras.utils import plot_model
-from tensorflow.compat.v1.keras.callbacks import TensorBoard,EarlyStopping
+from keras.optimizers import Adam
+from keras.utils import plot_model
+from keras.callbacks import TensorBoard,EarlyStopping
 from Datasets import Dataset_Multi, Dataset_Single
 import matplotlib
 matplotlib.use('agg')
@@ -56,26 +56,26 @@ class Model_Multi(Model):
 
         model_input = Input((100,246,1))
 
-        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1', kernel_regularizer=regularizers.l2(0.01))(model_input)
+        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1', kernel_regularizer='l2'))(model_input)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_1')(x)
         x = Dropout(0.30)(x)
 
-        x = Conv2D(64, (3, 3), padding='same', name='conv2d_hidden_2', kernel_regularizer=regularizers.l2(0.01))(x)
+        x = Conv2D(64, (3, 3), padding='same', name='conv2d_hidden_2', kernel_regularizer='l2')(x)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_2')(x)
         x = Dropout(0.30)(x)
 
-        x = Conv2D(128, (3, 3), padding='same', name='conv2d_hidden_3', kernel_regularizer=regularizers.l2(0.01))(x)
+        x = Conv2D(128, (3, 3), padding='same', name='conv2d_hidden_3', kernel_regularizer='l2')(x)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_3')(x)
         x = Dropout(0.30)(x)
         x = Flatten()(x)
 
-        x = Dense( 256, activation ='relu', kernel_regularizer=regularizers.l2(0.01))(x)
+        x = Dense( 256, activation ='relu', kernel_regularizer='l2')(x)
 
         digit1 = (Dense(11,activation = 'softmax', name='digit_1'))(x)
         digit2 = (Dense(11,activation = 'softmax', name='digit_2'))(x)
@@ -172,19 +172,19 @@ class Model_Single(Model):
 
 
         model_input = Input((100, 256, 1))
-        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1', kernel_regularizer=regularizers.l2(0.01))(model_input)
+        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1', kernel_regularizer='l2')(model_input)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_1')(x)
         x = Dropout(0.30)(x)
 
-        x = Conv2D(63, (3, 3), padding='same', name='conv2d_hidden_2', kernel_regularizer=regularizers.l2(0.01))(x)
+        x = Conv2D(63, (3, 3), padding='same', name='conv2d_hidden_2', kernel_regularizer='l2')(x)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_2')(x)
         x = Dropout(0.30)(x)
 
-        x = Conv2D(128, (3, 3), padding='same', name='conv2d_hidden_3', kernel_regularizer=regularizers.l2(0.01))(x)
+        x = Conv2D(128, (3, 3), padding='same', name='conv2d_hidden_3', kernel_regularizer='l2')(x)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_3')(x)
