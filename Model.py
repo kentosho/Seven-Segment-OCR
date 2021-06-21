@@ -75,7 +75,7 @@ class Model_Multi(Model):
         x = Dropout(0.30)(x)
         x = Flatten()(x)
 
-        x = Dense( units= 256, activation ='relu')(x)
+        x = Dense( 256, activation ='relu')(x)
 
         digit1 = (Dense(11,activation = 'softmax', name='digit_1'))(x)
         digit2 = (Dense(11,activation = 'softmax', name='digit_2'))(x)
