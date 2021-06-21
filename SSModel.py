@@ -51,8 +51,10 @@ class Model_Multi(Model):
         
         self.X_train = self.dataset.convert_to_arrays(self.ids_train)
         self.X_val = self.dataset.convert_to_arrays(self.ids_val)
-        self.ssmodel = None
               
+    def model()
+    pass
+
     def model_init(self):
 
         model_input = Input((100,246,1))
@@ -85,14 +87,14 @@ class Model_Multi(Model):
 
         model_outputs = [digit1, digit2, digit3, digit4]
 
-        self.ssmodel = Model(inputs = model_input , outputs = model_outputs)
-        self.ssmodel._make_predict_function()
+        self.model = Model(inputs = model_input , outputs = model_outputs)
+        self.model._make_predict_function()
         
     def train(self, lr = 1e-3, epochs=50):
         optimizer = Adam(lr=lr, decay=lr/10)
-        self.ssmodel.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
+        self.model.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
         keras.backend.get_session().run(tf.initialize_all_variables())
-        self.history = self.ssmodel.fit(self.X_train, self.y_train_vect, batch_size= 50, nb_epoch=epochs, verbose=1, validation_data=(self.X_val, self.y_val_vect))
+        self.history = self.model.fit(self.X_train, self.y_train_vect, batch_size= 50, nb_epoch=epochs, verbose=1, validation_data=(self.X_val, self.y_val_vect))
         
         
     def plot_loss(self):
@@ -168,7 +170,6 @@ class Model_Single(SSModel):
         self.ids_train, self.ids_val, self.y_train, self.y_val = train_test_split(self.X, self.y, test_size=0.25, random_state=1)
         self.X_train = self.dataset.convert_to_arrays(self.ids_train)
         self.X_val = self.dataset.convert_to_arrays(self.ids_val)
-        self.ssmodel = None
 
     def model_init(self):
 
@@ -198,14 +199,14 @@ class Model_Single(SSModel):
 
         model_outputs = Dense( 11,activation = 'softmax', name='output')(x)
 
-        self.ssmodel = keras.models.Model(inputs = model_inputs , outputs = model_outputs)
-        self.ssmodel._make_predict_function() 
+        self.model = keras.models.Model(inputs = model_inputs , outputs = model_outputs)
+        self.model._make_predict_function() 
 
     def train(self, lr = 1e-3, epochs=5):
         optimizer = Adam(lr=lr, decay=lr/10)
-        self.ssmodel.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
+        self.model.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
         keras.backend.get_session().run(tf.initialize_all_variables())
-        self.history = self.ssmodel.fit(self.X_train, self.y_train, batch_size= 32, nb_epoch=30, verbose=1, validation_data=(self.X_val, self.y_val))
+        self.history = self.model.fit(self.X_train, self.y_train, batch_size= 32, nb_epoch=30, verbose=1, validation_data=(self.X_val, self.y_val))
 
 
     def plot_acc(self):
