@@ -85,8 +85,8 @@ class Model_Multi(SSModel):
 
         model_outputs = [digit1, digit2, digit3, digit4]
 
-        ssmodel = Model(inputs = model_input , outputs = model_outputs)
-        ssmodel._make_predict_function()
+        self.model = Model(inputs = model_input , outputs = model_outputs)
+        self.model._make_predict_function()
         return ssmodel
         
     def train(self, lr = 1e-3, epochs=50):
