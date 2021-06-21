@@ -78,7 +78,7 @@ class Model_Multi(Model):
 
         x = Flatten()(x)
 
-        x = Dense(256, activation ='relu', kernel_regularizer='l2')(x)
+        x = Dense( 256, activation ='relu', kernel_regularizer='l2')(x)
 
         digit1 = (Dense(11,activation = 'softmax', name='digit_1'))(x)
         digit2 = (Dense(11,activation = 'softmax', name='digit_2'))(x)
@@ -195,9 +195,9 @@ class Model_Single(Model):
 
         x = Flatten()(x)
 
-        x = Dense(11, activation ='relu', kernel_regularizer=l2(0.01))(x)
+        x = Dense( 1024, activation ='relu', kernel_regularizer=l2(0.01))(x)
 
-        output = Dense(11,activation = 'softmax', name='output')(x)
+        output = Dense( 11,activation = 'softmax', name='output')(x)
 
         self.model = keras.models.Model(input = model_input , output = output)
         self.model._make_predict_function() 
