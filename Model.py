@@ -9,6 +9,8 @@ from tensorflow.compat.v1.keras.layers.core import Dropout, Activation
 from tensorflow.compat.v1.keras.layers import BatchNormalization
 import tensorflow.compat.v1 as tf
 from tensorflow.compat.v1.keras import regularizers
+from tensorflow.compat.v1.keras import activations
+
 import tensorflow.compat.v1.keras.backend
 from tensorflow.compat.v1.keras.optimizers import Adam
 from tensorflow.compat.v1.keras.utils import plot_model
@@ -18,7 +20,6 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
-tf.disable_v2_behavior()
 
 class Model(object):
     
@@ -78,7 +79,7 @@ class Model_Multi(Model):
 
         x = Flatten()(x)
 
-        x = Dense(256, activation ='softmax', kernel_regularizer=regularizers.l2(0.01))(x)
+        x = Dense(256, activation ='relu')(x)
 
         digit1 = (Dense(11,activation = 'softmax', name='digit_1'))(x)
         digit2 = (Dense(11,activation = 'softmax', name='digit_2'))(x)
