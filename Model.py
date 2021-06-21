@@ -11,7 +11,7 @@ import tensorflow as tf
 from keras import regularizers
 import keras.backend
 from keras.optimizers import Adam
-from keras.utils import plot_model
+from tensorflow.compat.v1.keras.utils import plot_model
 from keras.callbacks import TensorBoard,EarlyStopping
 from Datasets import Dataset_Multi, Dataset_Single
 import matplotlib
