@@ -84,7 +84,7 @@ class Model_Multi(Model):
 
         model_outputs = [digit1, digit2, digit3, digit4]
 
-        self.model = Model(inputs = model_input , outputs = model_outputs)
+        self.model = keras.models.Model(inputs = model_input , outputs = model_outputs)
         self.model._make_predict_function()
         
     def train(self, lr = 1e-3, epochs=50):
