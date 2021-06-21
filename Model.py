@@ -18,22 +18,6 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
 
-class Model(object):
-    
-    def __init__(self):
-        
-        self.data_init()
-        self.model_init()
-    
-    def data_init(self):
-        pass
-    
-    def model_init(self):
-        pass
-    
-    def train_predict(self):
-        pass
-
 class Model_Multi(Model):
     
     def __init__(self):
@@ -84,7 +68,7 @@ class Model_Multi(Model):
 
         model_outputs = [digit1, digit2, digit3, digit4]
 
-        self.model = keras.models.Model(inputs = model_input , outputs = model_outputs)
+        self.model = Model(inputs = model_input , outputs = model_outputs)
         self.model._make_predict_function()
         
     def train(self, lr = 1e-3, epochs=50):
