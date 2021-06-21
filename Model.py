@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
-from tensorflow.compat.v1.keras.models import Sequential
-from tensorflow.compat.v1.keras.models import Model
-from tensorflow.compat.v1.keras.layers import Input, Dense, Conv2D, MaxPooling2D, Flatten
-from tensorflow.compat.v1.keras.layers.core import Dropout, Activation
-from tensorflow.compat.v1.keras.layers import BatchNormalization
+from keras.models import Sequential
+from keras.models import Model
+from keras.layers import Input, Dense, Conv2D, MaxPooling2D, Flatten
+from keras.layers.core import Dropout, Activation
+from keras.layers import BatchNormalization
 import tensorflow.compat.v1 as tf
 
 from tensorflow.compat.v1.keras.optimizers import Adam
