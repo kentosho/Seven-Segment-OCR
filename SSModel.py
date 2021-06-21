@@ -17,7 +17,7 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
-class SSModel(Model):
+class Model(Model):
 
     def __init__(self):
 
@@ -34,10 +34,10 @@ class SSModel(Model):
         pass
 
 
-class Model_Multi(SSModel):
+class Model_Multi(Model):
     
     def __init__(self):
-        SSModel.__init__(self)
+        Model.__init__(self)
  
     def data_init(self):
         self.dataset = Dataset_Multi()
