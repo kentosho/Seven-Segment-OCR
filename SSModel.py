@@ -87,12 +87,11 @@ class Model_Multi(Model):
 
         self.model = Model(input = model_input , outputs = model_outputs)
         self.model._make_predict_function()
-        return ssmodel
+        
         
     def train(self, lr = 1e-3, epochs=50):
-        ssmodel=self.model_init
         optimizer = Adam(lr=lr, decay=lr/10)
-        ssmodel.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
+        self.model.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
         keras.backend.get_session().run(tf.initialize_all_variables())
         self.history = ssmodel.fit(self.X_train, self.y_train_vect, batch_size= 50, nb_epoch=epochs, verbose=1, validation_data=(self.X_val, self.y_val_vect))
         
