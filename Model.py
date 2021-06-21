@@ -56,7 +56,7 @@ class Model_Multi(Model):
 
         model_input = Input((100,246,1))
 
-        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1', kernel_regularizer='l2'))(model_input)
+        x = Conv2D(32, (3, 3), padding='same', name='conv2d_hidden_1', kernel_regularizer='l2')(model_input)
         x = BatchNormalization()(x)
         x = Activation('relu')(x)
         x = MaxPooling2D(pool_size=(2, 2), strides=(3, 3),name='maxpool_2d_hidden_1')(x)
