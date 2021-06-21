@@ -34,10 +34,10 @@ class SSModel(Model):
         pass
 
 
-class Model_Multi(Model):
+class Model_Multi(SSModel):
     
     def __init__(self):
-        Model.__init__(self)
+        SSModel.__init__(self)
  
     def data_init(self):
         self.dataset = Dataset_Multi()
