@@ -51,7 +51,6 @@ class Model_Multi(Model):
         
         self.X_train = self.dataset.convert_to_arrays(self.ids_train)
         self.X_val = self.dataset.convert_to_arrays(self.ids_val)
-        self.model = Model
               
 
     def model_init(self):
@@ -86,14 +85,14 @@ class Model_Multi(Model):
 
         model_outputs = [digit1, digit2, digit3, digit4]
 
-        self.model = Model(inputs = model_input , outputs = model_outputs)
-        self.model._make_predict_function()
+        ssmodel = Model(inputs = model_input , outputs = model_outputs)
+        ssmodel._make_predict_function()
         
     def train(self, lr = 1e-3, epochs=50):
         optimizer = Adam(lr=lr, decay=lr/10)
-        self.model.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
+        ssmodel.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics = ['accuracy'])
         keras.backend.get_session().run(tf.initialize_all_variables())
-        self.history = self.model.fit(self.X_train, self.y_train_vect, batch_size= 50, nb_epoch=epochs, verbose=1, validation_data=(self.X_val, self.y_val_vect))
+        self.history = ssmodel.fit(self.X_train, self.y_train_vect, batch_size= 50, nb_epoch=epochs, verbose=1, validation_data=(self.X_val, self.y_val_vect))
         
         
     def plot_loss(self):
